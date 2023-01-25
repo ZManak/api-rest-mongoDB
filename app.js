@@ -6,7 +6,9 @@ require('./utils/db_mongo'); // conectarse a la BBDD Mongo
 const error404 = require('./middlewares/error404')
 
 // Módulos de Rutas
-const productsApiRoutes = require('./routes/productsApiRoutes')
+const productsApiRoutes = require('./routes/productsApiRoutes');
+const providersApiRouter = require('./routes/providersApiRoutes');
+const providersApiRoutes = require('./routes/providersApiRoutes');
 
 
 const app = express()
@@ -27,6 +29,7 @@ app.get('/', (req, res) => {
 
 //Rutas 
 app.use('/api/products',productsApiRoutes); // Rutas web API products
+app.use('/api/providers', providersApiRoutes);
 app.use(error404); // Middleware Para ruta no encontrada (404)
 
 app.listen(port, () => {

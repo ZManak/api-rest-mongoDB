@@ -25,14 +25,14 @@ const Provider = mongoose.model('Provider', providerSchema);
 
 // Insertar un provider
 
-const pro = new Provider({
+/* const pro = new Provider({
     company_name: "Barrofur",
     CIF: 5075328,
     address: "C/ de la Izquierda, s/n",
     url_web: "www.barrofur.net"
 });
 
-pro.save().then((data)=>console.log(data));
+pro.save().then((data)=>console.log(data)); */
 
 
-module.exports = Product;
+module.exports = Provider;
