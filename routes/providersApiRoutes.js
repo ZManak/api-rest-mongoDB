@@ -7,7 +7,7 @@ const providersApiRoutes = express.Router();
 // GET http://localhost:3000/api/products/3
 // GET http://localhost:3000/api/products/4
 // GET http://localhost:3000/api/products
-//providersApiRouter.get('/:id?',providersApiController.getProducts);
+providersApiRoutes.get('/',providersApiController.getProviders);
 
 /*Objeto de prueba para crear*/
 /*

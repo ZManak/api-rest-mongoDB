@@ -8,7 +8,6 @@ const error404 = require('./middlewares/error404')
 // Módulos de Rutas
 const productsApiRoutes = require('./routes/productsApiRoutes');
 const providersApiRoutes = require('./routes/providersApiRoutes');
-const providersApiRoutes = require('./routes/providersApiRoutes');
 
 
 const app = express()

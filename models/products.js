@@ -1,10 +1,5 @@
 const mongoose = require('mongoose');
 const objectSchema = {
-    id: { 
-        type: Number, 
-        required: true,
-        unique: true
-    },
     title: { 
         type: String, 
         required: true,
@@ -23,6 +18,7 @@ const objectSchema = {
         ref:'Provider'
     }
 };
+
 // Crear el esquema
 const productSchema = mongoose.Schema(objectSchema);
 // Crear el modelo --> Colección
