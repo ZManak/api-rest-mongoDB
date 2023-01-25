@@ -12,9 +12,7 @@ const getProviders = async (req,res) => {
 
 const createProvider = async (req,res) => {
     const newProvider = req.body; 
-
     try{
-        
         let response = await new Provider (newProvider);
         let answer = await response.save(); 
         console.log("Este es el console.log de lo que devuelve la api", answer);

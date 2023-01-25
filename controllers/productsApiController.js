@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const getProducts = async (req,res) => {
         try {
             let products = await Product.find({},'-_id -__v').populate('provider', '-_id -__v');
-            res.status(200).json(products); // Respuesta de la API para muchos productos
+            res.status(200).json(products);
         }
         catch(err){
             res.status(400).json({msj: err.message});
