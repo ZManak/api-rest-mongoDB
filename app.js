@@ -2,13 +2,13 @@ require('dotenv').config();
 const express = require('express')
 const cowsay = require('cowsay')
 
-require('./utils/db_mongo'); // conectarse a la BBDD Mongo
+require('./utils/db_mongo');
 
 
 // Módulos de Rutas
 const productsApiRoutes = require('./routes/productsApiRoutes');
 const providersApiRoutes = require('./routes/providersApiRoutes');
-const error404 = require('./middlewares/error404')
+const error404 = require('./middlewares/error404');
 
 const app = express()
 const port = 3000
@@ -16,9 +16,9 @@ const port = 3000
 // Middlewares
 app.use(express.json()); // Habilitar tipo de dato a recibir
 app.use(express.urlencoded({ extended: true }));
-
+//app.use(error404); 
 app.use(express.static('public'))
-app.use(error404); 
+
 app.get('/', (req, res) => {
     res.send("HOLA")
 })
