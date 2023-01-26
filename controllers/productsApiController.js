@@ -1,5 +1,6 @@
 // Controlador - Lógica de negocio de la app
 const Product = require('../models/products');
+const Provider = require('../models/providers');
 const mongoose = require('mongoose');
 
 const getProducts = async (req,res) => {
@@ -13,9 +14,9 @@ const getProducts = async (req,res) => {
     }
 
 const createProduct = async (req,res) => {
-    let id = mongoose.Types.ObjectId(req.body.provider);
-    const newProduct = req.body; //
-    newProduct.provider = id;
+    let company_id = await Provider.findOne({company_name: req.body.provider}, '_id').exec();
+    const newProduct = req.body; // {title, , price, description, provider: company_name}
+    newProduct.provider = company_id;
 
     try{
         let response = await new Product(newProduct);
