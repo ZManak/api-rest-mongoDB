@@ -35,16 +35,39 @@ const createProduct = async (req,res) => {
 }
 
 const deleteProduct = async (req,res)=>{
-    const msj ="Has enviado un DELETE para borrar product";
-    console.log(msj);
-    res.json({"message":msj});
+    try {
+        let answer = await Product.findOneAndDelete({title: req.body.title});
+        res.status(200).json({
+            msj: `Producto ${answer.title} eliminado del sistema.`,
+            product: answer  
+    })}
+    catch(err){
+        res.status(400).json({msj: err.message});
+    }
 }
 
+const updateProduct = async (req, res) => {
+    let newProvider = await Provider.findOne({company_name: req.body.newProvider}, '_id').exec();
+    console.log(newProvider)
+    const updatedProduct = req.body;
+    updatedProduct.newProvider = newProvider;
+    console.log(req.body)
+    
+    try {
+        let response = await Product.findOneAndUpdate({title: updatedProduct.title}, {title: updatedProduct.newTitle , price: updatedProduct.newPrice, description: updatedProduct.newDescription, provider: updatedProduct.newProvider}, {returnDocument: 'after'});
+        res.status(200).json({
+            msj: `Producto actualizado.`,
+            product: response  
+    })}
+    catch(err){
+        res.status(400).json({msj: err.message});
+    }
+}
 module.exports = {
     getProducts,
     createProduct,
-    deleteProduct
-    //editProduct,
+    deleteProduct,
+    updateProduct
 }
 
 
