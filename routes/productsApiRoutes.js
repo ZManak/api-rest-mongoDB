@@ -13,5 +13,7 @@ productsApiRoutes.post('/',productsApiController.createProduct);
 // DELETE
 productsApiRoutes.delete('/', productsApiController.deleteProduct);
 
+productsApiRoutes.put('/', productsApiController.updateProduct);
+
 
 module.exports = productsApiRoutes;
