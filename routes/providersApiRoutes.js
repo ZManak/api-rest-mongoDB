@@ -11,7 +11,10 @@ providersApiRoutes.get('/',providersApiController.getProviders);
 providersApiRoutes.post('/',providersApiController.createProvider);
 
 // DELETE
-//productsApiRouter.delete('/', productsApiController.deleteProduct);
+providersApiRoutes.delete('/', providersApiController.deleteProvider);
+
+//UPDATE
+providersApiRoutes.put('/', providersApiController.updateProvider);
 
 
 module.exports = providersApiRoutes;
