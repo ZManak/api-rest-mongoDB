@@ -30,15 +30,33 @@ const createProvider = async (req,res) => {
     }
 }
 
-const deleteProduct = async (req,res)=>{
-    const msj ="Has enviado un DELETE para borrar product";
-    console.log(msj);
-    res.json({"message":msj});
+const deleteProvider = async (req,res)=>{
+    try {
+        let answer = await Provider.findOneAndDelete({company_name: req.body.company_name});
+        res.status(200).json({
+            msj: `Proveedor ${answer.company_name} eliminado del sistema.`,
+            product: answer  
+    })}
+    catch(err){
+        res.status(400).json({msj: err.message});
+    }
+}
+
+const updateProvider = async (req, res) => {
+    const updatedProvider = req.body;
+    try {
+        let response = await Provider.findOneAndUpdate({company_name: updatedProvider.company_name}, {company_name: updatedProvider.newName , CIF: updatedProvider.newCIF, address: updatedProvider.newAddress, url_web: updatedProvider.newUrl}, {returnDocument: 'after'});
+        res.status(200).json({
+            msj: `Proveedor actualizado.`,
+            product: response  
+    })}
+    catch(err){
+        res.status(400).json({msj: err.message});
+    }
 }
 module.exports = {
     getProviders,
     createProvider,
-    //deleteProduct
-    //editProduct,
-    
+    deleteProvider,
+    updateProvider    
 }
