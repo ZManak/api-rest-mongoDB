@@ -19,23 +19,17 @@ const objectSchema = {
     }
 };
 
-// Crear el esquema
 const productSchema = mongoose.Schema(objectSchema);
-// Crear el modelo --> Colección
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
 
 
-// Insertar un producto
-/*
+/* Modelo de producto
 const p = new Product({
-    id: 2,
-    title: "Barrita",
-    price: 1.80,
-    description: "Barrita jugosa del teatro",
-    image:"https://www.recetasderechupete.com/wp-content/uploads/2020/11/Tortilla-de-patatas-4-768x530.jpg"
+    title: "Name",
+    price: 1,
+    description: "Description goes here",
+    provider: "provider name"
 });
-
-p.save().then((data)=>console.log(data));
 */
