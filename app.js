@@ -1,19 +1,17 @@
-require('dotenv').config();
-const express = require('express')
-const cowsay = require('cowsay')
-require('./utils/db_mongo');
+const express = require('express');
+const cowsay = require('cowsay');
 
 const productsApiRoutes = require('./routes/productsApiRoutes');
 const providersApiRoutes = require('./routes/providersApiRoutes');
 
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
 app.get('/', (req, res) => {
-    res.send("Welcome")
+    res.send("Welcome");
 })
 
 app.use('/api/products',productsApiRoutes);

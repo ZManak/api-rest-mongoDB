@@ -2,8 +2,6 @@ const express = require('express')
 const productsApiController = require('../controllers/productsApiController')
 const productsApiRoutes = express.Router();
 
-// Rutas de API de productos
-
 productsApiRoutes.get('/',productsApiController.getProducts);
 
 productsApiRoutes.post('/',productsApiController.createProduct);
