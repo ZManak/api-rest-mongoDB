@@ -2,7 +2,6 @@ const express = require('express')
 const providersApiController = require('../controllers/providersApiController')
 const providersApiRoutes = express.Router();
 
-// Rutas de API de proveedores
 
 providersApiRoutes.get('/',providersApiController.getProviders);
 

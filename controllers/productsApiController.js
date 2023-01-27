@@ -14,7 +14,7 @@ const getProducts = async (req, res) => {
 const createProduct = async (req, res) => {
     try {
         let company_id = await Provider.findOne({ company_name: req.body.provider }, '_id').exec();
-        const newProduct = req.body; // {title, , price, description, provider: company_name}
+        const newProduct = req.body;
         newProduct.provider = company_id;
         let response = await new Product(newProduct);
         let answer = await response.save();
@@ -56,6 +56,7 @@ const updateProduct = async (req, res) => {
         res.status(400).json({ msj: err.message });
     }
 }
+
 module.exports = {
     getProducts,
     createProduct,
